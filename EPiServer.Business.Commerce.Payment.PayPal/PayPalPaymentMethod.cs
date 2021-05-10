@@ -51,7 +51,7 @@ namespace EPiServer.Business.Commerce.Payment.PayPal
             payment.Amount = amount;
             payment.Status = PaymentStatus.Pending.ToString();
 
-            if (paymentAction != null && paymentAction.Value == TransactionType.Authorization.ToString())
+            if (paymentAction != null && EncrytionHelper.DecryptString(paymentAction.Value) == TransactionType.Authorization.ToString())
             {
                 payment.TransactionType = TransactionType.Authorization.ToString();
             }
